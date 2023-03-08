@@ -19,7 +19,16 @@ const ListEvent = () => {
     getEvents()
   }, [])
 
-  console.log(events);
+  const deleteEvent = async (id) => {
+    try {
+      const deleteEvent = await fetch(`http://localhost:5001/event/${id}`, {
+        method: 'DELETE'
+      })
+      setEvents(events.filter(event => event.event_id !== id))
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
 
   return (
     <Fragment>
@@ -36,7 +45,7 @@ const ListEvent = () => {
         </thead>
         <tbody>
           {events.map((event) => (
-            <tr>
+            <tr key={event.event_id}>
               <td>{event.name}</td>
               <td>{event.e_date.slice(0, 10)}</td>
               <td>{event.location}</td>
@@ -44,8 +53,11 @@ const ListEvent = () => {
                 <AiOutlineEdit />
               </td>
               <td>
-                <button className='btn btn-danger'>
-                  <MdDelete />
+                <button 
+                  className='btn btn-danger'
+                  onClick={() => deleteEvent(event.event_id)}
+                >
+                    <MdDelete />
                 </button>
               </td>
             </tr>
