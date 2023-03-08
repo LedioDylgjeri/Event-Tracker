@@ -1,17 +1,17 @@
-import React, {Fragment, useState, useRef} from 'react'
+import React, {Fragment, useState} from 'react'
 
 const InputEvent = () => {
-
-  let newDate = new Date().toLocaleDateString();
+  
+  let newDate = new Date().toJSON().slice(0,10);
 
   const [name, setName] = useState('')
-  const [date, setDate] = useState(newDate)
+  const [e_date, setDate] = useState(newDate)
   const [location, setLocation] = useState('')
 
   const onSubmitForm = async (e) => {
     e.preventDefault()
     try {
-      const body = {name, date, location }
+      const body = {name, e_date, location }
       const response = await fetch('http://localhost:5001/event', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -22,8 +22,6 @@ const InputEvent = () => {
       console.error(err.message)
     }
   }
-
-  console.log(date);
 
   return (
     <Fragment>
@@ -45,11 +43,10 @@ const InputEvent = () => {
         <input
           type="date"
           className="form-control"
-          placeholder='yyyy-mm-dd'
           id="event-date"
-          value={date}
+          value={e_date}
           onChange={(e) => setDate(e.target.value)}
-        />
+          />
         <label for="event-location" className="form-label mt-4">
           Event Location
         </label>
