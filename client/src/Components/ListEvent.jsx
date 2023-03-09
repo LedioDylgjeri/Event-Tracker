@@ -1,9 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { AiOutlineEdit } from 'react-icons/ai'
+import EditEvent from './EditEvent'
 import { MdDelete } from 'react-icons/md'
 
 const ListEvent = () => {
   const [events, setEvents] = useState([])
+  const [heading, setHeading] = useState('')
 
   const getEvents = async () => {
     try {
@@ -14,7 +15,7 @@ const ListEvent = () => {
       console.error(err.message);
     }
   };
-
+  
   useEffect(() => {
     getEvents()
   }, [])
@@ -32,8 +33,8 @@ const ListEvent = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">Upcoming Events</h1>
-      <table class="table table-success table-striped text-center mt-2">
+      <h1 className="text-center mt-5">{heading}</h1>
+      <table className="table table-success table-striped text-center mt-2">
         <thead>
           <tr>
             <th scope="col">Event Name</th>
@@ -50,14 +51,14 @@ const ListEvent = () => {
               <td>{event.e_date.slice(0, 10)}</td>
               <td>{event.location}</td>
               <td>
-                <AiOutlineEdit />
+                <EditEvent event={event} />
               </td>
               <td>
-                <button 
-                  className='btn btn-danger'
+                <button
+                  className="btn btn-danger"
                   onClick={() => deleteEvent(event.event_id)}
                 >
-                    <MdDelete />
+                  <MdDelete />
                 </button>
               </td>
             </tr>
