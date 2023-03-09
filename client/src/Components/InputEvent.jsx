@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react'
+import './InputEvent.css'
 
 const InputEvent = () => {
   
@@ -26,9 +27,9 @@ const InputEvent = () => {
   return (
     <Fragment>
       <div className="event-input">
-        <h1 className="text-center mt-5">Event Tracker</h1>
+        <h1 className="text-center mt-5 event-tracker">Event Tracker</h1>
         <form onSubmit={onSubmitForm}>
-          <label for="event-input" className="form-label mt-5">
+          <label for="event-input" className="form-label mt-4">
             Event Name
           </label>
           <input
@@ -61,7 +62,7 @@ const InputEvent = () => {
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
-          <button className="btn btn-success mt-2">Add</button>
+          <button className="btn btn-success mt-2 add-btn">Add</button>
         </form>
       </div>
     </Fragment>

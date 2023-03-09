@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react'
 import { AiOutlineEdit } from "react-icons/ai";
 import { BiSave } from "react-icons/bi";
 import { AiFillCloseCircle } from "react-icons/ai";
+import './EditEvent.css'
 
 const EditEvent = ({ event }) => {
 
@@ -62,13 +63,13 @@ const EditEvent = ({ event }) => {
               />
               <input
                 type="date"
-                className="form-control"
+                className="form-control mt-1"
                 value={e_date}
                 onChange={(e) => setDate(e.target.value)}
               />
               <input
                 type="text"
-                className="form-control"
+                className="form-control mt-1"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
               />

@@ -4,7 +4,6 @@ import { MdDelete } from 'react-icons/md'
 
 const ListEvent = () => {
   const [events, setEvents] = useState([])
-  const [heading, setHeading] = useState('')
 
   const getEvents = async () => {
     try {
@@ -33,7 +32,7 @@ const ListEvent = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">{heading}</h1>
+      <h1 className="text-center mt-5">Event List</h1>
       <table className="table table-success table-striped text-center mt-2">
         <thead>
           <tr>
